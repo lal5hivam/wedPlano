@@ -12,20 +12,24 @@ const Home = () => {
 
   return (
     <div>
-      <section style={styles.hero}>
+      <section style={styles.hero} className="hero-section">
         <div className="container text-center">
-          <h1 style={styles.title}>Find Your Perfect Wedding Venue</h1>
-          <p style={styles.subtitle}>Discover and book stunning venues for your special day</p>
-          <form onSubmit={handleSearch} style={styles.searchForm}>
+          <h1 style={styles.title} className="hero-title">Find Your Perfect Wedding Venue</h1>
+          <p style={styles.subtitle} className="hero-subtitle">
+            Discover and book stunning venues for your special day
+          </p>
+          <form onSubmit={handleSearch} style={styles.searchForm} className="hero-search-form">
             <input
               type="text"
               placeholder="Search by city, venue name..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="form-input"
+              className="form-input hero-search-input"
               style={styles.searchInput}
             />
-            <button type="submit" className="btn btn-primary btn-lg">Search Venues</button>
+            <button type="submit" className="btn btn-primary btn-lg btn-mobile-full">
+              Search Venues
+            </button>
           </form>
         </div>
       </section>
@@ -33,7 +37,7 @@ const Home = () => {
       <section style={styles.features}>
         <div className="container">
           <h2 style={styles.sectionTitle}>Why Choose Wedplano?</h2>
-          <div style={styles.featureGrid}>
+          <div style={styles.featureGrid} className="feature-grid">
             <div className="card">
               <div className="card-body text-center">
                 <div style={styles.icon}>🏛️</div>
