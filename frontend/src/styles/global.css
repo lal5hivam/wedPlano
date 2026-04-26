@@ -159,7 +159,110 @@ input, select, textarea {
 /* Responsive grid */
 .venue-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
 
+/* ── Mobile-first responsive overrides ── */
 @media (max-width: 768px) {
+  /* Layout */
   .venue-grid { grid-template-columns: 1fr; }
   .container { padding: 0 1rem; }
+
+  /* Navbar */
+  .nav-links-mobile-hidden { display: none !important; }
+  .nav-links-mobile-open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-white);
+    border-top: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    box-shadow: var(--shadow);
+    z-index: 99;
+  }
+  .nav-hamburger { display: flex !important; }
+
+  /* Typography scale-down */
+  h1 { font-size: 1.6rem !important; }
+  h2 { font-size: 1.3rem !important; }
+  h3 { font-size: 1.1rem !important; }
+
+  /* Hero section */
+  .hero-section {
+    padding: 3rem 0 !important;
+    min-height: auto !important;
+  }
+  .hero-title { font-size: 1.8rem !important; }
+  .hero-subtitle { font-size: 1rem !important; }
+  .hero-search-form {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  .hero-search-input { min-width: unset !important; width: 100% !important; }
+
+  /* Feature grid */
+  .feature-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+
+  /* Filter grid */
+  .filter-grid { grid-template-columns: 1fr !important; }
+
+  /* Stats grid */
+  .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
+
+  /* Venue detail: stack sidebar below main */
+  .venue-detail-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .venue-detail-sidebar {
+    position: static !important;
+  }
+  .venue-gallery {
+    grid-template-columns: 1fr !important;
+  }
+  .venue-gallery-image { height: 220px !important; }
+
+  /* Dashboard booking header: stack on small screens */
+  .booking-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  .booking-details-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Partner dashboard header */
+  .partner-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+
+  /* Manage venue: inline rows become stacked */
+  .form-row { flex-direction: column !important; gap: 0 !important; }
+
+  /* Notifications header */
+  .notif-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+  .notif-item-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Service item in manage venue */
+  .service-item-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Buttons full-width on small screens when inside stacked layouts */
+  .btn-mobile-full { width: 100% !important; }
 }

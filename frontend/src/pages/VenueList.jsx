@@ -42,10 +42,11 @@ const VenueList = () => {
     <div className="page-content">
       <div className="container">
         <h1 style={styles.title}>Browse Venues</h1>
-        
+
         <div className="card" style={styles.filterCard}>
           <div className="card-body">
-            <div style={styles.filterGrid}>
+            {/* filter-grid uses CSS class for responsive columns */}
+            <div style={styles.filterGrid} className="filter-grid">
               <input
                 type="text"
                 placeholder="Search venues..."
@@ -125,15 +126,31 @@ const VenueList = () => {
 const styles = {
   title: { fontSize: '2rem', marginBottom: '1.5rem' },
   filterCard: { marginBottom: '2rem' },
-  filterGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem' },
+  filterGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+    gap: '1rem',
+  },
   grid: { marginTop: '2rem' },
   venueCard: { cursor: 'pointer', transition: 'transform 0.2s', display: 'block' },
   imageContainer: { height: '200px', overflow: 'hidden', background: 'var(--border)' },
   image: { width: '100%', height: '100%', objectFit: 'cover' },
-  placeholder: { height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' },
+  placeholder: {
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'var(--text-muted)',
+  },
   venueTitle: { fontSize: '1.2rem', marginBottom: '0.5rem' },
   location: { color: 'var(--text-light)', fontSize: '0.9rem', marginBottom: '0.5rem' },
-  details: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.75rem', fontSize: '0.85rem' },
+  details: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: '0.75rem',
+    fontSize: '0.85rem',
+  },
   price: { fontSize: '1.3rem', fontWeight: 600, color: 'var(--primary)', marginTop: '0.75rem' },
   empty: { textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' },
 };
