@@ -1,5 +1,7 @@
 require('dotenv').config();
 const app = require('./app');
+const { initializeFirebase } = require('./config/firebase');
+const { initializeCloudinary } = require('./config/cloudinary');
 
 // Validate required environment variables
 const requiredEnvVars = [
@@ -23,6 +25,16 @@ if (missingVars.length > 0) {
 // Validate JWT_SECRET length
 if (process.env.JWT_SECRET.length < 32) {
   console.error('JWT_SECRET must be at least 32 characters long');
+  process.exit(1);
+}
+
+// Initialize Firebase and Cloudinary
+try {
+  initializeFirebase();
+  initializeCloudinary();
+  console.log('✓ Firebase and Cloudinary initialized');
+} catch (err) {
+  console.error('Failed to initialize services:', err.message);
   process.exit(1);
 }
 
