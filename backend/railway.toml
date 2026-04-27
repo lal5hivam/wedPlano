@@ -1,0 +1,13 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "npm start"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+[healthchecks.httpGet]
+path = "/health"
+port = 5000
+intervalSeconds = 30
+timeoutSeconds = 10
