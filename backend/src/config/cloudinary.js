@@ -3,8 +3,11 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const multer = require('multer');
 
 let upload = null;
+let initialized = false;
 
 const initializeCloudinary = () => {
+  if (initialized) return upload;
+
   // Validate Cloudinary configuration
   const requiredCloudinaryVars = ['CLOUDINARY_CLOUD_NAME', 'CLOUDINARY_API_KEY', 'CLOUDINARY_API_SECRET'];
   const missingVars = requiredCloudinaryVars.filter(v => !process.env[v]);
@@ -41,12 +44,13 @@ const initializeCloudinary = () => {
     },
   });
 
+  initialized = true;
   return upload;
 };
 
-// Lazy initialize on first access
+// Get upload instance (initializes on first call)
 const getUpload = () => {
-  if (!upload) {
+  if (!initialized) {
     initializeCloudinary();
   }
   return upload;

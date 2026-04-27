@@ -1,9 +1,10 @@
 const admin = require('firebase-admin');
 
 let db = null;
+let initialized = false;
 
 const initializeFirebase = () => {
-  if (db) return db;
+  if (initialized) return db;
 
   // Validate Firebase configuration
   const requiredFirebaseVars = [
@@ -41,17 +42,22 @@ const initializeFirebase = () => {
   }
 
   db = admin.firestore();
+  initialized = true;
   return db;
 };
 
-// Lazy initialize on first access
+// Get database instance (initializes on first call)
 const getDb = () => {
-  if (!db) {
+  if (!initialized) {
     initializeFirebase();
   }
   return db;
 };
 
-module.exports = { admin, db: new Proxy({}, {
-  get: (target, prop) => getDb()[prop],
-}), initializeFirebase };
+module.exports = { 
+  admin, 
+  get db() {
+    return getDb();
+  },
+  initializeFirebase 
+};
